@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MVVM</title>
+    <style>
+        .box-list > div{
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            display: inline-block;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+        <input v-model="name"></input>
+        <div>
+            姓名 
+            </span>{{name}}<span>
+        </div>
+      <div class="box-list">
+        <div v-if="showBox1">showBox1</div>
+        <div v-show="showBox2">showBox2</div>
+        <div v-if="showBox3">showBox3</div>
+        <div v-show="showBox4">showBox4</div>
+      </div>
+      <div class="button-list">
+        <button @click="btnShowBox1">button 1</button>
+        <button @click="btnShowBox2">button 2</button>
+        <button @click="btnShowBox3">button 3</button>
+        <button @click="btnShowBox4">button 4</button>
+    </div>
+
+    </div>
+  </body>
+  <script src="./mvvm.js"></script>
+  <script>
+    const app = new MVVM({
+      el: "#app",
+      data: {
+        name:"",
+        showBox1: false,
+        showBox2: false,
+        showBox3: false,
+        showBox4: false,
+      },
+      methods: {
+        btnShowBox1() {
+            console.log("btn-1",this)
+          this.showBox1 = !this.showBox1;
+        },
+        btnShowBox2() {
+          this.showBox2 = !this.showBox2;
+        },
+        btnShowBox3() {
+          this.showBox3 = !this.showBox3;
+        },
+        btnShowBox4() {
+          this.showBox4 = !this.showBox4;
+        },
+      },
+    });
+    console.log(app)
+  </script>
+</html>
